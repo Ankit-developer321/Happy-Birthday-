@@ -18,9 +18,17 @@
 </head>
 <body>
 <div id="loader"><div class="loader-gift">🎁</div><b>Preparing your surprise…</b><span>just a second, birthday girl 💗</span></div>
+<div id="soundGate" class="sound-gate" aria-modal="true" role="dialog">
+  <div class="sound-card">
+    <span class="sound-icon">🎧</span>
+    <span class="kicker">ONE LITTLE REQUEST…</span>
+    <h2>Turn your sound on? ❤️</h2>
+    <p>There’s a tiny soundtrack waiting for you.</p>
+    <button class="primary" id="soundStart">Yes, let’s start</button>
+  </div>
+</div>
 <div id="decor" aria-hidden="true"></div>
 <div id="story" aria-live="polite"></div>
-<div class="story-progress" id="progress"></div>
 <div class="sound"><button id="musicBtn" aria-label="Music">♫</button><audio id="music" loop preload="auto"></audio></div>
 <script src="content.js"></script>
 <script src="script.js"></script>
