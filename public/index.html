@@ -1,42 +1,13 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#ff6f9f">
-<meta name="description" content="A little birthday surprise, made with love.">
-<title>Happy Birthday ❤️</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#ff5d91"><meta name="description" content="A birthday surprise made with love."><title>Happy Birthday, My Gurl! ❤️</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div id="loader" class="loader"><div class="loader-balloon">🎈</div><strong>Getting your surprise ready…</strong><span>made with a little extra love ❤️</span></div>
-<div class="confetti-bg" aria-hidden="true"></div>
-<div id="particles" aria-hidden="true"></div>
-<div class="floating-balloons" aria-hidden="true"><i>🎈</i><i>🎈</i><i>🎈</i><i>🎈</i></div>
-<div class="progress" aria-hidden="true"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-<main id="app">
-<section id="opening" class="scene opening active">
-  <div class="sparkle sparkle-a">✦</div><div class="sparkle sparkle-b">✧</div><div class="sparkle sparkle-c">♡</div>
-  <div class="opening-card">
-    <div class="mini-badge">A LITTLE SURPRISE ✨</div>
-    <div class="big-heart">💗</div>
-    <span class="eyebrow" id="openingKicker"></span>
-    <h1 id="openingTitle"></h1>
-    <p id="openingSubtitle"></p>
-    <button id="openBtn" class="primary-btn"></button>
-    <small>🔊 Turn your sound on for the full experience</small>
-  </div>
-  <div class="scroll-hint">tap to begin ↓</div>
-</section>
-<section id="birthday" class="scene"><div class="section-inner birthday-card"><div class="sticker">🎂</div><span class="eyebrow">TODAY IS YOUR DAY</span><h2 id="birthdayTitle"></h2><p id="birthdayMessage" class="lead"></p><div class="cake" aria-label="Birthday cake with candles"><div class="flame f1"></div><div class="flame f2"></div><div class="flame f3"></div><div class="candle c1"></div><div class="candle c2"></div><div class="candle c3"></div><div class="icing"></div><div class="cake-body"></div><div class="sprinkles"></div><div class="plate"></div></div><button class="next-btn" data-next="memories">Okayyy… show me our memories 💕</button></div></section>
-<section id="memories" class="scene"><div class="section-inner wide"><span class="eyebrow">MEMORY LANE 📸</span><h2>Our little moments.</h2><p class="lead">The big memories are lovely… but I think I love the tiny ones most. ❤️</p><div id="memoriesGrid" class="memory-grid"></div><button class="next-btn" data-next="littleThings">There’s more… 👀</button></div></section>
-<section id="littleThings" class="scene"><div class="section-inner wide"><span class="eyebrow">NO PEEKING 🤫</span><h2>Things I love about you.</h2><p class="lead">Tap the cards. I hid a little message inside each one.</p><div id="thingsGrid" class="things-grid"></div><button class="next-btn" data-next="finale">One last thing… 💌</button></div></section>
-<section id="finale" class="scene finale"><div class="section-inner"><div class="finale-heart">💖</div><span class="eyebrow">AND FINALLY…</span><h2 id="finaleTitle"></h2><div class="letter" id="finaleLetter"></div><button id="surpriseBtn" class="primary-btn">Open the last surprise 🎁</button><div id="finalReveal" class="final-reveal" aria-live="polite"></div><div class="end-note">Made just for you, from a little too far away. 🫶</div></div></section>
-</main>
-<div class="controls"><button id="musicBtn" class="icon-btn" aria-label="Play music">♫</button><button id="replayBtn" class="icon-btn" aria-label="Replay surprise">↻</button></div>
-<audio id="music" loop preload="none" src="assets/birthday-song.mp3"></audio>
+<div id="loader"><div class="loader-gift">🎁</div><b>Preparing your surprise…</b><span>please wait, birthday girl 💗</span></div>
+<div id="decor" aria-hidden="true"></div><div id="story" aria-live="polite"></div>
+<div class="story-progress" id="progress"></div>
+<div class="sound"><button id="musicBtn" aria-label="Music">♫</button><audio id="music" loop preload="none" src="assets/birthday-song.mp3"></audio></div>
 <script src="script.js"></script>
 </body></html>
