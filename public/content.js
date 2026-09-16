@@ -54,5 +54,5 @@ window.BIRTHDAY_CONTENT = {
 
 Until then, I hope this little world reminds you how loved, missed, and ridiculously special you are.
 
-Happy birthday, my gurl. ❤️`
+AB❤️`
 };
