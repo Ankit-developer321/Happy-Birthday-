@@ -1,16 +1,4 @@
 (() => {
-  document.addEventListener('click', (e) => {
-    const btn = e.target.closest?.('#nextMemory');
-    if (!btn) return;
-    const memories = window.BIRTHDAY_CONTENT?.memories || [];
-    const current = window.__page3MemoryIndex ?? 0;
-    if (current >= memories.length - 1) {
-      e.preventDefault();
-      e.stopImmediatePropagation();
-      if (typeof window.romanticNext === 'function') window.romanticNext();
-    }
-  }, true);
-
   const baseRender = window.render;
   if (typeof baseRender !== 'function') return;
 
@@ -35,12 +23,14 @@
         <div id="loveMessage" class="love-message"></div>
         <div class="love-hint" id="loveHint">Find all five ✨</div>
         <div class="love-complete" id="loveComplete">Okay… now you know. ❤️</div>
+        <button class="primary love-next" id="loveNext" type="button">Continue… ✨</button>
       </div>`;
 
     const love = window.BIRTHDAY_CONTENT?.love || [];
     const message = screen.querySelector('#loveMessage');
     const hint = screen.querySelector('#loveHint');
     const complete = screen.querySelector('#loveComplete');
+    const next = screen.querySelector('#loveNext');
     const found = new Set();
 
     screen.querySelectorAll('.heart-bubble').forEach((button) => {
@@ -55,16 +45,21 @@
         hint.textContent = found.size < 5 ? `${found.size} of 5 discovered ✨` : '';
         if (found.size === 5) {
           setTimeout(() => complete.classList.add('show'), 500);
-          setTimeout(() => { hint.textContent = 'But there’s one thing distance keeps reminding me…'; }, 1100);
+          setTimeout(() => {
+            hint.textContent = 'But there’s one thing distance keeps reminding me…';
+            next.classList.add('show');
+          }, 1100);
         }
       });
+    });
+
+    next.addEventListener('click', () => {
+      if (found.size < 5) return;
+      if (typeof window.romanticNext === 'function') window.romanticNext();
     });
   };
 
   // Give the Page 3 -> Page 4 handoff a little more breathing room.
-  // The original transition still performs the actual story-step change;
-  // this cinematic prelude simply holds the moment above it so the final
-  // reveal feels intentional instead of like a quick page swap.
   const originalRomanticNext = window.romanticNext;
   if (typeof originalRomanticNext !== 'function') return;
 
@@ -109,12 +104,10 @@
     document.body.appendChild(overlay);
     requestAnimationFrame(() => overlay.classList.add('show'));
 
-    // Start the real story transition while the cinematic layer is still on top.
     setTimeout(() => {
       originalRomanticNext();
     }, 1550);
 
-    // Let the underlying Page 4 reveal breathe rather than cutting away.
     setTimeout(() => {
       overlay.classList.remove('show');
       overlay.classList.add('fade');
