@@ -59,6 +59,7 @@
     });
   };
 
+  // Page 5 owns only its exit to Page 6. Page 4 -> Page 5 is handled by page4-main.js.
   const oldNext = window.romanticNext;
   window.romanticNext = function () {
     if (window.__page5Transitioning) return;
@@ -66,19 +67,18 @@
     if (!screen) return oldNext?.();
     window.__page5Transitioning = true;
     const overlay = document.createElement('div');
-    overlay.className = 'page4-to-page5';
-    overlay.innerHTML = '<div class="p45-copy">The miles are real…</div><div class="p45-heart">❤️</div><div class="p45-line"></div><div class="p45-copy second">But they never changed us. ✨</div>';
+    overlay.className = 'page5-to-page6';
+    overlay.innerHTML = '<div class="p56-copy">One last little surprise…</div><div class="p56-heart">🎁</div><div class="p56-copy second">Just for you. ❤️</div>';
     document.body.appendChild(overlay);
     screen.classList.add('story-leave');
     requestAnimationFrame(() => overlay.classList.add('show'));
     setTimeout(() => {
-      // The base controller owns the story state; advance only after the cinematic beat.
       if (typeof oldNext === 'function') oldNext();
       setTimeout(() => {
         overlay.remove();
         window.__page5Transitioning = false;
       }, 900);
-    }, 2300);
+    }, 1900);
   };
 
   document.addEventListener('click', (e) => {
