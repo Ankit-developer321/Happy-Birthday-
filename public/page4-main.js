@@ -54,16 +54,36 @@
     });
 
     next.addEventListener('click', () => {
-      if (found.size < 5) return;
-      if (typeof window.romanticNext === 'function') window.romanticNext();
+      if (found.size < 5 || window.__page4Transitioning) return;
+      window.__page4Transitioning = true;
+      const overlay = document.createElement('div');
+      overlay.className = 'page4-to-page5';
+      overlay.innerHTML = '<div class="p45-copy">The miles are real…</div><div class="p45-heart">❤️</div><div class="p45-line"></div><div class="p45-copy second">But they never changed us. ✨</div>';
+      document.body.appendChild(overlay);
+      screen.classList.add('story-leave');
+      requestAnimationFrame(() => overlay.classList.add('show'));
+      setTimeout(() => {
+        // Advance the base story only after the Page 4 cinematic beat.
+        if (typeof window.__page4BaseNext === 'function') window.__page4BaseNext();
+        setTimeout(() => {
+          overlay.remove();
+          window.__page4Transitioning = false;
+        }, 900);
+      }, 2300);
     });
   };
 
-  // Give the Page 3 -> Page 4 handoff a little more breathing room.
   const originalRomanticNext = window.romanticNext;
   if (typeof originalRomanticNext !== 'function') return;
+  window.__page4BaseNext = originalRomanticNext;
 
+  // Give the Page 3 -> Page 4 handoff a little more breathing room.
   window.romanticNext = function () {
+    if (document.querySelector('.love-screen')) {
+      const next = document.querySelector('#loveNext');
+      if (next && !window.__page4Transitioning) next.click();
+      return;
+    }
     if (!document.querySelector('.memory-screen')) {
       originalRomanticNext();
       return;
@@ -104,15 +124,11 @@
     document.body.appendChild(overlay);
     requestAnimationFrame(() => overlay.classList.add('show'));
 
-    setTimeout(() => {
-      originalRomanticNext();
-    }, 1550);
-
+    setTimeout(() => originalRomanticNext(), 1550);
     setTimeout(() => {
       overlay.classList.remove('show');
       overlay.classList.add('fade');
     }, 2350);
-
     setTimeout(() => {
       overlay.remove();
       style.remove();
