@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Page 4 — A Little Secret 💌</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="story-screen love-screen">
+  <div class="stars"></div>
+  <div class="content">
+    <span class="kicker">A LITTLE SECRET 💌</span>
+    <h2>Tap a heart.</h2>
+    <p class="subtitle">I hid five little things I want you to know.</p>
+    <div class="heart-field">
+      <button class="heart-bubble" data-i="0">💗</button>
+      <button class="heart-bubble" data-i="1">🎧</button>
+      <button class="heart-bubble" data-i="2">🫶</button>
+      <button class="heart-bubble" data-i="3">🥹</button>
+      <button class="heart-bubble" data-i="4">🌍</button>
+    </div>
+    <div id="loveMessage" class="love-message">Choose one 👆</div>
+    <button class="secondary" id="loveNext">I found them all ✨</button>
+  </div>
+</main>
+<script>
+const love=[
+ ['💗','Your smile can fix my whole mood.'],
+ ['🎧','Your voice makes the distance feel smaller.'],
+ ['🫶','I notice all those tiny things you think nobody notices.'],
+ ['🥹','I miss you more than I usually know how to say.'],
+ ['🌍','Different places. Same us.']
+];
+const message=document.getElementById('loveMessage');
+document.querySelectorAll('.heart-bubble').forEach(b=>b.addEventListener('click',()=>{
+ message.textContent=love[Number(b.dataset.i)][1];
+ b.style.transform='scale(1.18)';
+ setTimeout(()=>b.style.transform='',450);
+}));
+</script>
+</body>
+</html>
