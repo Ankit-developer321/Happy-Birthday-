@@ -7,11 +7,10 @@
     const overlay = document.createElement('div');
     overlay.className = 'page5-to-page6';
     overlay.innerHTML = '<div class="p56-copy">One last little surprise…</div><div class="p56-heart">🎁</div><div class="p56-copy second">Just for you. ❤️</div>';
-    document.body.appendChild(overlay);
-    screen?.classList.add('story-leave');
+    document.body.appendChild(overlay); screen?.classList.add('story-leave');
     requestAnimationFrame(() => overlay.classList.add('show'));
     setTimeout(() => {
-      if (typeof window.__birthdayAdvance === 'function') window.__birthdayAdvance();
+      if (typeof window.__page4BaseNext === 'function') window.__page4BaseNext();
       setTimeout(() => { overlay.remove(); window.__page5Transitioning = false; }, 1000);
     }, 1900);
   };
