@@ -10,6 +10,10 @@
     btn.innerHTML = '<span aria-hidden="true">♡</span><b>turn the page…</b><i aria-hidden="true">→</i>';
 
     btn.addEventListener('click', (e) => {
+      if (btn.dataset.turnBypass === '1') {
+        delete btn.dataset.turnBypass;
+        return;
+      }
       e.preventDefault();
       e.stopPropagation();
       if (busy) return;
@@ -21,7 +25,6 @@
 
       const next = current + 1;
       busy = true;
-
       const currentPhoto = `photos/page3/${current + 1}.jpg`;
       const nextPhoto = `photos/page3/${next + 1}.jpg`;
       const overlay = document.createElement('div');
@@ -36,24 +39,12 @@
 
       setTimeout(() => {
         window.__page3MemoryIndex = next;
-        // Keep the app's existing memory state in sync with the card turn.
-        const event = new CustomEvent('page3MemoryTurn', { detail: { memory: next } });
-        document.dispatchEvent(event);
-        const scriptClick = new MouseEvent('click', { bubbles: true, cancelable: true });
-        const hiddenProxy = document.createElement('button');
-        hiddenProxy.id = 'page3-memory-proxy';
-        hiddenProxy.style.display = 'none';
-        document.body.appendChild(hiddenProxy);
-        hiddenProxy.addEventListener('click', () => {}, { once: true });
-
         overlay.classList.add('done');
         setTimeout(() => {
           overlay.classList.remove('show');
           setTimeout(() => {
             overlay.remove();
-            hiddenProxy.remove();
             busy = false;
-            // Existing app state is advanced through the original control without showing it.
             const realBtn = document.querySelector('#nextMemory');
             if (realBtn) {
               realBtn.dataset.turnBypass = '1';
