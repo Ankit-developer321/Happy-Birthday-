@@ -56,6 +56,16 @@
     }, true);
   }
 
+  document.addEventListener('click', (e) => {
+    const card = e.target.closest?.('#page3Photo');
+    if (!card || !card.classList.contains('revealed') || busy) return;
+    const memories = window.BIRTHDAY_CONTENT?.memories || [];
+    const current = window.__page3MemoryIndex || 0;
+    if (current >= memories.length - 1) return;
+    const btn = document.querySelector('#nextMemory');
+    if (btn) btn.click();
+  });
+
   new MutationObserver(enhance).observe(document.body, { childList: true, subtree: true });
   enhance();
 })();
