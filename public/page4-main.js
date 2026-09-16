@@ -60,4 +60,69 @@
       });
     });
   };
+
+  // Give the Page 3 -> Page 4 handoff a little more breathing room.
+  // The original transition still performs the actual story-step change;
+  // this cinematic prelude simply holds the moment above it so the final
+  // reveal feels intentional instead of like a quick page swap.
+  const originalRomanticNext = window.romanticNext;
+  if (typeof originalRomanticNext !== 'function') return;
+
+  window.romanticNext = function () {
+    if (!document.querySelector('.memory-screen')) {
+      originalRomanticNext();
+      return;
+    }
+
+    const existing = document.querySelector('.page3-transition-prelude');
+    if (existing) return;
+
+    const style = document.createElement('style');
+    style.className = 'page3-transition-prelude-style';
+    style.textContent = `
+      .page3-transition-prelude{
+        position:fixed;inset:0;z-index:400;pointer-events:none;display:grid;place-items:center;
+        overflow:hidden;opacity:0;background:radial-gradient(circle at 50% 56%,rgba(92,47,82,.97) 0%,rgba(29,21,42,.98) 48%,rgba(7,8,19,1) 100%);
+      }
+      .page3-transition-prelude.show{animation:p3PreludeIn 1.15s ease forwards}
+      .page3-transition-prelude.fade{animation:p3PreludeOut 1.05s ease forwards}
+      .p3-prelude-glow{position:absolute;width:58vw;height:58vw;max-width:560px;max-height:560px;border-radius:50%;background:radial-gradient(circle,rgba(235,126,168,.38),rgba(133,73,137,.20) 42%,transparent 72%);filter:blur(22px);transform:scale(.48);opacity:0}
+      .page3-transition-prelude.show .p3-prelude-glow{animation:p3PreludeGlow 2.65s ease forwards}
+      .p3-prelude-heart{position:relative;z-index:2;font-size:clamp(4.2rem,18vw,8.5rem);opacity:0;transform:scale(.48);filter:drop-shadow(0 0 30px rgba(255,130,177,.7))}
+      .page3-transition-prelude.show .p3-prelude-heart{animation:p3PreludeHeart 2.65s cubic-bezier(.18,.82,.25,1) forwards}
+      .p3-prelude-copy{position:absolute;top:22%;z-index:3;font-family:Georgia,serif;font-size:clamp(1.15rem,4.8vw,2rem);color:#f8dce8;text-align:center;opacity:0;transform:translateY(12px)}
+      .page3-transition-prelude.show .p3-prelude-copy{animation:p3PreludeCopy 2.65s ease forwards}
+      .p3-prelude-sparkles{position:absolute;bottom:21%;z-index:3;color:#f5a7c4;font-size:clamp(1rem,4vw,1.7rem);letter-spacing:.75rem;opacity:0}
+      .page3-transition-prelude.show .p3-prelude-sparkles{animation:p3PreludeSparkles 2.65s ease forwards}
+      @keyframes p3PreludeIn{0%{opacity:0}28%{opacity:1}100%{opacity:1}}
+      @keyframes p3PreludeOut{0%{opacity:1}100%{opacity:0}}
+      @keyframes p3PreludeGlow{0%{opacity:0;transform:scale(.48)}28%{opacity:1;transform:scale(.9)}58%{opacity:.9;transform:scale(1)}82%{opacity:.55;transform:scale(1.12)}100%{opacity:.05;transform:scale(1.24)}}
+      @keyframes p3PreludeHeart{0%{opacity:0;transform:scale(.48)}28%{opacity:1;transform:scale(1.04)}45%{transform:scale(.96)}58%{transform:scale(1)}82%{opacity:.9;transform:scale(1.08)}100%{opacity:.15;transform:scale(1.22)}}
+      @keyframes p3PreludeCopy{0%,18%{opacity:0;transform:translateY(12px)}34%{opacity:1;transform:translateY(0)}74%{opacity:1}100%{opacity:0;transform:translateY(-5px)}}
+      @keyframes p3PreludeSparkles{0%,24%{opacity:0;transform:translateY(8px)}38%{opacity:.85;transform:translateY(0)}72%{opacity:.65}100%{opacity:0;transform:translateY(-8px)}}
+    `;
+    document.head.appendChild(style);
+
+    const overlay = document.createElement('div');
+    overlay.className = 'page3-transition-prelude';
+    overlay.innerHTML = '<div class="p3-prelude-glow"></div><div class="p3-prelude-heart">❤️</div><div class="p3-prelude-copy">One more little piece of us…</div><div class="p3-prelude-sparkles">✦　·　♥　·　✦</div>';
+    document.body.appendChild(overlay);
+    requestAnimationFrame(() => overlay.classList.add('show'));
+
+    // Start the real story transition while the cinematic layer is still on top.
+    setTimeout(() => {
+      originalRomanticNext();
+    }, 1550);
+
+    // Let the underlying Page 4 reveal breathe rather than cutting away.
+    setTimeout(() => {
+      overlay.classList.remove('show');
+      overlay.classList.add('fade');
+    }, 2350);
+
+    setTimeout(() => {
+      overlay.remove();
+      style.remove();
+    }, 3450);
+  };
 })();
