@@ -28,6 +28,7 @@
     const sub = screen.querySelector('.distance-sub');
     const next = screen.querySelector('#distanceNext');
     const her = screen.querySelector('.distance-person.her');
+
     if (her) her.addEventListener('click', () => {
       if (her.dataset.opened) return;
       her.dataset.opened = '1';
@@ -57,31 +58,31 @@
         }, 500);
       }, 350);
     });
-  };
 
-  // Page 5 owns only its exit to Page 6. Page 4 -> Page 5 is handled by page4-main.js.
-  const oldNext = window.romanticNext;
-  window.romanticNext = function () {
-    if (window.__page5Transitioning) return;
-    const screen = document.querySelector('.distance-screen');
-    if (!screen) return oldNext?.();
-    window.__page5Transitioning = true;
-    const overlay = document.createElement('div');
-    overlay.className = 'page5-to-page6';
-    overlay.innerHTML = '<div class="p56-copy">One last little surprise…</div><div class="p56-heart">🎁</div><div class="p56-copy second">Just for you. ❤️</div>';
-    document.body.appendChild(overlay);
-    screen.classList.add('story-leave');
-    requestAnimationFrame(() => overlay.classList.add('show'));
-    setTimeout(() => {
-      if (typeof oldNext === 'function') oldNext();
+    // Page 5 -> Page 6 uses a dedicated one-shot handler so it never
+    // re-enters the Page 4 romanticNext wrapper chain.
+    next.addEventListener('click', () => {
+      if (!next.classList.contains('show') || window.__page5Transitioning) return;
+      window.__page5Transitioning = true;
+
+      const overlay = document.createElement('div');
+      overlay.className = 'page5-to-page6';
+      overlay.innerHTML = '<div class="p56-copy">One last little surprise…</div><div class="p56-heart">🎁</div><div class="p56-copy second">Just for you. ❤️</div>';
+      document.body.appendChild(overlay);
+      screen.classList.add('story-leave');
+      requestAnimationFrame(() => overlay.classList.add('show'));
+
       setTimeout(() => {
-        overlay.remove();
-        window.__page5Transitioning = false;
-      }, 900);
-    }, 1900);
-  };
+        // page4-main.js stores the unwrapped base story controller here.
+        // Calling it directly advances Page 5 -> Page 6 without another wrapper.
+        const baseNext = window.__page4BaseNext;
+        if (typeof baseNext === 'function') baseNext();
 
-  document.addEventListener('click', (e) => {
-    if (e.target.closest?.('#distanceNext')) window.romanticNext();
-  });
+        setTimeout(() => {
+          overlay.remove();
+          window.__page5Transitioning = false;
+        }, 1000);
+      }, 1900);
+    });
+  };
 })();
