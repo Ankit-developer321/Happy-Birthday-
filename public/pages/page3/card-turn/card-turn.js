@@ -48,6 +48,15 @@
           setTimeout(() => {
             overlay.remove();
             busy = false;
+
+            // The final card-turn must hand off directly to the Page 3 → Page 4
+            // transition. The story's `memory` variable is intentionally not
+            // advanced here because Page 4 is the next destination.
+            if (next >= memories.length - 1) {
+              window.BirthdayTransitions?.page3ToPage4?.();
+              return;
+            }
+
             const realBtn = document.querySelector('#nextMemory');
             if (realBtn) {
               realBtn.dataset.turnBypass = '1';
