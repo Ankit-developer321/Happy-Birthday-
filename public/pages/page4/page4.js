@@ -8,7 +8,6 @@
     const message = screen.querySelector('#loveMessage');
     const hint = screen.querySelector('#loveHint');
     const complete = screen.querySelector('#loveComplete');
-    const next = screen.querySelector('#loveNext');
     const found = new Set();
     screen.querySelectorAll('.heart-bubble').forEach(button => button.addEventListener('click', () => {
       const i = Number(button.dataset.i);
@@ -23,14 +22,10 @@
         setTimeout(() => complete.classList.add('show'), 500);
         setTimeout(() => {
           hint.textContent = 'But there’s one thing distance keeps reminding me…';
-          next.classList.add('show');
+          document.querySelector('#loveNext')?.classList.add('show');
         }, 1100);
       }
     }));
-    next.addEventListener('click', () => {
-      if (found.size < 5) return;
-      window.BirthdayTransitions?.page4ToPage5?.();
-    });
   }
 
   window.BirthdayPages.page4 = { render: renderPage4 };
