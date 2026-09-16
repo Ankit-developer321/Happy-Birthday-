@@ -5,27 +5,27 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Page 4 — A Little Secret 💌</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#090714;color:#fff}body{font-family:'Baloo 2',system-ui,sans-serif;overflow:hidden}.story-screen{min-height:100svh;position:relative;display:grid;place-items:center;overflow:hidden;background:radial-gradient(circle at 50% 38%,#21133d 0,#100a24 38%,#090714 76%)}.story-screen:before,.story-screen:after{content:"";position:absolute;border-radius:50%;filter:blur(45px);pointer-events:none}.story-screen:before{width:220px;height:220px;background:#6d3ca8;opacity:.18;top:8%;left:10%}.story-screen:after{width:260px;height:260px;background:#bd4f91;opacity:.1;right:-80px;bottom:5%}.stars{position:absolute;inset:0;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:72px 72px;opacity:.18}.content{width:min(680px,92vw);position:relative;z-index:2;text-align:center;padding:34px 10px}.kicker{font-size:.78rem;letter-spacing:.22em;color:#d9b9f6;font-weight:700}.content h2{font-family:'DM Serif Display',Georgia,serif;font-size:clamp(2.8rem,11vw,5.6rem);font-weight:400;line-height:.95;margin:12px 0 12px}.subtitle{font-size:1.05rem;color:#cfc4df;margin:0 auto;max-width:420px}.heart-field{position:relative;width:min(560px,100%);height:390px;margin:14px auto 0}.heart-bubble{position:absolute;width:72px;height:72px;border:1px solid rgba(255,205,245,.28);border-radius:50%;background:radial-gradient(circle at 35% 28%,rgba(255,255,255,.25),rgba(190,91,176,.16) 38%,rgba(95,49,125,.12) 70%,transparent 72%);box-shadow:0 0 22px rgba(239,142,224,.28),inset 0 0 18px rgba(255,255,255,.08);font-size:2rem;cursor:pointer;color:#fff;transition:transform .55s ease,opacity .45s ease,filter .45s ease,box-shadow .45s ease;animation:drift 4.8s ease-in-out infinite;touch-action:manipulation}.heart-bubble:hover{filter:brightness(1.2);box-shadow:0 0 32px rgba(255,157,231,.5),inset 0 0 20px rgba(255,255,255,.12)}.heart-bubble.found{opacity:.55;filter:saturate(.7);box-shadow:0 0 12px rgba(239,142,224,.18)}.heart-bubble.active{transform:scale(1.28)!important;opacity:1;filter:brightness(1.35);box-shadow:0 0 48px rgba(255,161,232,.75)}.heart-bubble:nth-child(1){left:7%;top:43%;animation-delay:-.8s}.heart-bubble:nth-child(2){left:29%;top:8%;animation-delay:-2.2s}.heart-bubble:nth-child(3){right:27%;top:42%;animation-delay:-3.5s}.heart-bubble:nth-child(4){right:5%;top:12%;animation-delay:-1.4s}.heart-bubble:nth-child(5){right:10%;bottom:3%;animation-delay:-4s}.love-message{min-height:68px;max-width:520px;margin:0 auto;padding:0 14px;font-family:'DM Serif Display',Georgia,serif;font-size:clamp(1.25rem,4.5vw,1.75rem);font-style:italic;color:#f8eafa;opacity:0;transform:translateY(8px);transition:opacity .35s ease,transform .35s ease}.love-message.show{opacity:1;transform:none}.hint{margin-top:8px;color:#a99ab9;font-size:.82rem;opacity:.8}.complete{opacity:0;transform:translateY(8px);transition:.5s ease;margin-top:10px;color:#f4d9f1;font-family:'DM Serif Display',Georgia,serif;font-size:1.35rem}.complete.show{opacity:1;transform:none}@keyframes drift{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-13px) rotate(2deg)}}@media(max-width:500px){.heart-field{height:340px}.heart-bubble{width:64px;height:64px;font-size:1.75rem}.heart-bubble:nth-child(1){left:3%}.heart-bubble:nth-child(2){left:26%}.heart-bubble:nth-child(3){right:24%}.heart-bubble:nth-child(4){right:1%}.heart-bubble:nth-child(5){right:5%;bottom:0}.content{padding-top:24px}.subtitle{font-size:.98rem}}
+</style>
 </head>
 <body>
-<main class="story-screen love-screen">
-  <div class="stars"></div>
-  <div class="content">
-    <span class="kicker">A LITTLE SECRET 💌</span>
-    <h2>Tap a heart.</h2>
-    <p class="subtitle">I hid five little things I want you to know.</p>
-    <div class="heart-field">
-      <button class="heart-bubble" data-i="0">💗</button>
-      <button class="heart-bubble" data-i="1">🎧</button>
-      <button class="heart-bubble" data-i="2">🫶</button>
-      <button class="heart-bubble" data-i="3">🥹</button>
-      <button class="heart-bubble" data-i="4">🌍</button>
-    </div>
-    <div id="loveMessage" class="love-message">Choose one 👆</div>
-    <button class="secondary" id="loveNext">I found them all ✨</button>
-  </div>
-</main>
+<main class="story-screen love-screen"><div class="stars"></div><div class="content">
+<span class="kicker">A LITTLE SECRET 💌</span>
+<h2>Tap a heart.</h2>
+<p class="subtitle">There are five little things I don't always say out loud.</p>
+<div class="heart-field">
+<button class="heart-bubble" data-i="0" aria-label="Hidden feeling one">💗</button>
+<button class="heart-bubble" data-i="1" aria-label="Hidden feeling two">🎧</button>
+<button class="heart-bubble" data-i="2" aria-label="Hidden feeling three">🫶</button>
+<button class="heart-bubble" data-i="3" aria-label="Hidden feeling four">🥹</button>
+<button class="heart-bubble" data-i="4" aria-label="Hidden feeling five">🌍</button>
+</div>
+<div id="loveMessage" class="love-message"></div>
+<div class="hint" id="hint">Find all five ✨</div>
+<div class="complete" id="complete">Okay… now you know. ❤️</div>
+</div></main>
 <script>
 const love=[
  ['💗','Your smile can fix my whole mood.'],
@@ -34,11 +34,13 @@ const love=[
  ['🥹','I miss you more than I usually know how to say.'],
  ['🌍','Different places. Same us.']
 ];
-const message=document.getElementById('loveMessage');
+const message=document.getElementById('loveMessage'),hint=document.getElementById('hint'),complete=document.getElementById('complete');
+const found=new Set();
 document.querySelectorAll('.heart-bubble').forEach(b=>b.addEventListener('click',()=>{
- message.textContent=love[Number(b.dataset.i)][1];
- b.style.transform='scale(1.18)';
- setTimeout(()=>b.style.transform='',450);
+ const i=Number(b.dataset.i); found.add(i); document.querySelectorAll('.heart-bubble').forEach(x=>x.classList.remove('active')); b.classList.add('active','found');
+ message.textContent=love[i][1];message.classList.remove('show');requestAnimationFrame(()=>message.classList.add('show'));
+ hint.textContent=found.size<5?`${found.size} of 5 discovered ✨`:'';
+ if(found.size===5){setTimeout(()=>complete.classList.add('show'),500);setTimeout(()=>{hint.textContent='But there’s one thing distance keeps reminding me…';},1100);}
 }));
 </script>
 </body>
