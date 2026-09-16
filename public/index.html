@@ -1,42 +1,12 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#080914">
-<meta name="description" content="A little world I put together because you deserve a little surprise today. ❤️">
-<meta property="og:title" content="Hey you… 👀">
-<meta property="og:description" content="I made a little something for you. Open your surprise 💗">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hey you… 👀">
-<meta name="twitter:description" content="I made a little something for you. Open your surprise 💗">
-<title>Hey you… 👀</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="page2.css">
-<link rel="stylesheet" href="page3.css">
-<link rel="stylesheet" href="page3-card-turn.css">
-<link rel="stylesheet" href="page4.css">
-<link rel="stylesheet" href="page5.css">
-</head>
-<body>
-<div id="soundGate" class="sound-gate" aria-modal="true" role="dialog" aria-labelledby="soundTitle">
-  <div class="sound-orbit orbit-one"></div><div class="sound-orbit orbit-two"></div>
-  <div class="sound-spark spark-one">✦</div><div class="sound-spark spark-two">·</div><div class="sound-spark spark-three">✧</div>
-  <div class="sound-scene"><div class="sound-music-mark" aria-hidden="true"><span>♪</span><span>♫</span><span>♪</span></div>
-    <span class="sound-kicker">BEFORE WE BEGIN…</span><h2 id="soundTitle">Turn your sound on<br>for me? <i>❤️</i></h2>
-    <p>There’s a little song waiting<br>to make this surprise feel complete.</p>
-    <button class="primary sound-start" id="soundStart"><span>Yes… let’s begin</span><b>🎵</b></button>
-    <small class="sound-whisper">Just press play on the little moment. ✨</small>
-  </div>
-</div>
-<div id="decor" aria-hidden="true"></div><div id="story" aria-live="polite"></div>
-<div class="sound"><button id="musicBtn" aria-label="Music">♫</button><audio id="music" loop preload="auto"></audio></div>
-<script src="content.js"></script>
-<script src="script.js"></script>
-<script src="page3-card-turn.js"></script>
-<script src="page4-main.js"></script>
-<script src="page5-main.js"></script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#080914"><meta name="description" content="A little world I put together because you deserve a little surprise today. ❤️"><meta property="og:title" content="Hey you… 👀"><meta property="og:description" content="I made a little something for you. Open your surprise 💗"><meta property="og:type" content="website"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Hey you… 👀"><meta name="twitter:description" content="I made a little something for you. Open your surprise 💗"><title>Hey you… 👀</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="pages/page2/page2.css"><link rel="stylesheet" href="pages/page3/page3.css"><link rel="stylesheet" href="pages/page3/card-turn/card-turn.css"><link rel="stylesheet" href="pages/page4/page4.css"><link rel="stylesheet" href="pages/page5/page5.css">
+<link rel="stylesheet" href="transitions/page3-to-page4/transition.css"><link rel="stylesheet" href="transitions/page4-to-page5/transition.css"><link rel="stylesheet" href="transitions/page5-to-page6/transition.css">
+</head><body>
+<div id="soundGate" class="sound-gate" aria-modal="true" role="dialog" aria-labelledby="soundTitle"><div class="sound-orbit orbit-one"></div><div class="sound-orbit orbit-two"></div><div class="sound-spark spark-one">✦</div><div class="sound-spark spark-two">·</div><div class="sound-spark spark-three">✧</div><div class="sound-scene"><div class="sound-music-mark" aria-hidden="true"><span>♪</span><span>♫</span><span>♪</span></div><span class="sound-kicker">BEFORE WE BEGIN…</span><h2 id="soundTitle">Turn your sound on<br>for me? <i>❤️</i></h2><p>There’s a little song waiting<br>to make this surprise feel complete.</p><button class="primary sound-start" id="soundStart"><span>Yes… let’s begin</span><b>🎵</b></button><small class="sound-whisper">Just press play on the little moment. ✨</small></div></div>
+<div id="decor" aria-hidden="true"></div><div id="story" aria-live="polite"></div><div class="sound"><button id="musicBtn" aria-label="Music">♫</button><audio id="music" loop preload="auto"></audio></div>
+<script src="content.js"></script><script src="script.js"></script><script src="pages/page3/card-turn/card-turn.js"></script><script src="transitions/page3-to-page4/transition.js"></script><script src="transitions/page4-to-page5/transition.js"></script><script src="transitions/page5-to-page6/transition.js"></script><script src="pages/page4/page4-main.js"></script><script src="pages/page5/page5-main.js"></script>
 </body></html>
