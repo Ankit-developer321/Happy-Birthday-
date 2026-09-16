@@ -1,14 +1,1 @@
-(() => {
-  window.BirthdayTransitions = window.BirthdayTransitions || {};
-  window.BirthdayTransitions.page3ToPage4 = function (advance) {
-    if (document.querySelector('.page3-transition-prelude')) return;
-    const overlay = document.createElement('div');
-    overlay.className = 'page3-transition-prelude';
-    overlay.innerHTML = '<div class="p3-prelude-glow"></div><div class="p3-prelude-heart">❤️</div><div class="p3-prelude-copy">One more little piece of us…</div><div class="p3-prelude-sparkles">✦　·　♥　·　✦</div>';
-    document.body.appendChild(overlay);
-    requestAnimationFrame(() => overlay.classList.add('show'));
-    setTimeout(() => { if (typeof advance === 'function') advance(); }, 1550);
-    setTimeout(() => overlay.classList.add('fade'), 2350);
-    setTimeout(() => overlay.remove(), 3450);
-  };
-})();
+(() => {window.BirthdayTransitions=window.BirthdayTransitions||{};window.BirthdayTransitions.page3ToPage4=function(){if(window.BirthdayStory?.isTransitioning()||document.querySelector('.page3-transition-prelude'))return;window.BirthdayStory?.beginTransition();const o=document.createElement('div');o.className='page3-transition-prelude';o.innerHTML='<div class="p3-prelude-glow"></div><div class="p3-prelude-heart">❤️</div><div class="p3-prelude-copy">One more little piece of us…</div><div class="p3-prelude-sparkles">✦　·　♥　·　✦</div>';document.body.appendChild(o);document.querySelector('.story-screen')?.classList.add('story-leave');requestAnimationFrame(()=>o.classList.add('show'));setTimeout(()=>window.BirthdayStory?.advanceTo(3),1550);setTimeout(()=>o.classList.add('fade'),2350);setTimeout(()=>{o.remove();window.BirthdayStory?.endTransition()},3450)}})();
