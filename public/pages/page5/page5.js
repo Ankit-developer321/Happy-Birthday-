@@ -18,9 +18,9 @@
       setTimeout(() => {
         copy.classList.add('fade');
         setTimeout(() => {
-          copy.textContent = 'I wish your birthday hug didn’t have to wait.';
+          copy.textContent = 'I just wish your birthday hug didn’t have to wait… I really want to be there and hold you tight. ❤️🥺';
           copy.classList.remove('fade');
-          sub.textContent = 'The miles are real… but they never got to decide how close you are to me.';
+          sub.textContent = 'Distance can measure the miles between us, but it could never measure the place you have in my heart. ✨❤️';
           setTimeout(() => {
             copy.classList.add('fade');
             setTimeout(() => {
@@ -36,7 +36,7 @@
                 }, 550);
               }, 1700);
             }, 500);
-          }, 2200);
+          }, 2600);
         }, 500);
       }, 350);
     });
