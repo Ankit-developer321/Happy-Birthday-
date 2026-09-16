@@ -10,6 +10,14 @@
     btn.innerHTML = '<span aria-hidden="true">♡</span><b>turn the page…</b><i aria-hidden="true">→</i>';
 
     btn.addEventListener('click', (e) => {
+      const memories = window.BIRTHDAY_CONTENT?.memories || [];
+      if (window.__page3MemoryIndex == null) window.__page3MemoryIndex = 0;
+      const current = window.__page3MemoryIndex;
+
+      // On the final memory, do NOT intercept the click. Let the main
+      // story handler receive it and run the Page 3 → Page 4 transition.
+      if (current >= memories.length - 1) return;
+
       if (btn.dataset.turnBypass === '1') {
         delete btn.dataset.turnBypass;
         return;
@@ -17,20 +25,6 @@
       e.preventDefault();
       e.stopPropagation();
       if (busy) return;
-
-      const memories = window.BIRTHDAY_CONTENT?.memories || [];
-      if (window.__page3MemoryIndex == null) window.__page3MemoryIndex = 0;
-      const current = window.__page3MemoryIndex;
-
-      // The card-turn helper used to stop here on the final memory,
-      // preventing the main Page 3 → Page 4 transition from firing.
-      // Hand the final step to the main story transition instead.
-      if (current >= memories.length - 1) {
-        if (typeof window.romanticNext === 'function') {
-          window.romanticNext();
-        }
-        return;
-      }
 
       const next = current + 1;
       busy = true;
