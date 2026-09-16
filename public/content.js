@@ -48,7 +48,7 @@ window.BIRTHDAY_CONTENT = {
     ['🌍', 'Different places. Same us.']
   ],
 
-  finalMessage: 'The miles are real. But so is my love for you. ❤️',
+  finalMessage: 'The distance is real, but somehow, my heart still feels right next to yours. ❤️',
 
   letter: `If I could give you one thing today, it would be a whole day with me beside you — no screens, no distance, just us.
 
